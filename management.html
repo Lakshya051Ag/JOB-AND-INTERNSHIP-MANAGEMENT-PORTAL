@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job and Internship Management Portal</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+        }
+
+        /* Header */
+
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 15px 50px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .nav a:hover {
+            color: #dbeafe;
+        }
+
+        /* Home */
+
+        .home {
+            background-color: #dbeafe;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .home h1 {
+            font-size: 40px;
+            color: #1e3a8a;
+        }
+
+        .home p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .search {
+            margin-top: 30px;
+        }
+
+        .search input {
+            width: 250px;
+            padding: 12px;
+            margin: 5px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+
+        .search button {
+            padding: 12px 25px;
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .search button:hover {
+            background-color: #162d6b;
+        }
+
+        /* Main sections */
+
+        .section {
+            padding: 50px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+        }
+
+        /* Categories */
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .category {
+            background-color: white;
+            width: 200px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .category h3 {
+            color: #333;
+        }
+
+        .category p {
+            color: #666;
+        }
+
+        /* Jobs */
+
+        .jobs {
+            background-color: #eef2f7;
+        }
+
+        .job-list {
+            width: 90%;
+            margin: auto;
+        }
+
+        .job {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .job h3 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .job p {
+            color: #666;
+        }
+
+        .job button {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+        }
+
+        .job button:hover {
+            background-color: #162d6b;
+        }
+
+        /* Internship */
+
+        .internship-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .internship {
+            background-color: white;
+            width: 280px;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .internship h3 {
+            color: #222;
+        }
+
+        .internship p {
+            color: #666;
+        }
+
+        .internship button {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+
+        /* Companies */
+
+        .companies {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            background-color: white;
+            padding: 20px 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* About */
+
+        .about {
+            background-color: #dbeafe;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .about p {
+            width: 70%;
+            margin: auto;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Apply Button (anchor styled like button) */
+
+        .apply-btn {
+            display: inline-block;
+            background-color: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+        }
+
+        .apply-btn:hover {
+            background-color: #162d6b;
+        }
+
+        /* Modal - hidden by default, shown when page hash matches id */
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+
+        .modal:target {
+            display: block;
+        }
+
+        .modal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        .modal-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 35px;
+            border-radius: 6px;
+            width: 380px;
+            z-index: 1001;
+            box-sizing: border-box;
+        }
+
+        .modal-box h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        .modal-box .modal-company {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .modal-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-box input,
+        .modal-box select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .modal-box .submit-btn {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .modal-box .submit-btn:hover {
+            background-color: #162d6b;
+        }
+
+        .modal-close {
+            display: block;
+            text-align: right;
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="header">
+
+            <div class="logo">
+                JobPortal
+            </div>
+
+            <div class="nav">
+                <a href="#home">Home</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#internships">Internships</a>
+                <a href="#companies">Companies</a>
+                <a href="#about">About</a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Home Section -->
+
+    <div class="home" id="home">
+
+        <h1>Job and Internship Management Portal</h1>
+
+        <p>
+            Find suitable jobs and internships according to your skills.
+        </p>
+
+        <div class="search">
+
+            <input type="text" placeholder="Search job or internship">
+
+            <input type="text" placeholder="Enter location">
+
+            <button>Search</button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Categories -->
+
+    <div class="section">
+
+        <h2>Job Categories</h2>
+
+        <div class="categories">
+
+            <div class="category">
+                <h3>Software Development</h3>
+                <p>Jobs related to software and application development.</p>
+            </div>
+
+            <div class="category">
+                <h3>Web Development</h3>
+                <p>Find opportunities for HTML, CSS and web development.</p>
+            </div>
+
+            <div class="category">
+                <h3>Cyber Security</h3>
+                <p>Explore jobs related to cyber security and networking.</p>
+            </div>
+
+            <div class="category">
+                <h3>Data Analysis</h3>
+                <p>Find jobs related to data and business analysis.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Jobs -->
+
+    <div class="section jobs" id="jobs">
+
+        <h2>Available Jobs</h2>
+
+        <div class="job-list">
+
+            <div class="job">
+
+                <h3>Software Developer</h3>
+
+                <p>Company: ABC Technologies</p>
+
+                <p>Location: Noida</p>
+
+                <p>Salary: 5 - 8 LPA</p>
+
+                <p>Skills: Java, Python, SQL</p>
+
+                <a class="apply-btn" href="#apply-sd">Apply Now</a>
+
+            </div>
+
+
+            <div class="job">
+
+                <h3>Web Developer</h3>
+
+                <p>Company: Web Solutions</p>
+
+                <p>Location: Delhi</p>
+
+                <p>Salary: 4 - 7 LPA</p>
+
+                <p>Skills: HTML, CSS, JavaScript</p>
+
+                <a class="apply-btn" href="#apply-wd">Apply Now</a>
+
+            </div>
+
+
+            <div class="job">
+
+                <h3>Cyber Security Analyst</h3>
+
+                <p>Company: Secure Systems</p>
+
+                <p>Location: Gurgaon</p>
+
+                <p>Salary: 5 - 9 LPA</p>
+
+                <p>Skills: Networking, Linux, Security</p>
+
+                <a class="apply-btn" href="#apply-csa">Apply Now</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Internships -->
+
+    <div class="section" id="internships">
+
+        <h2>Internship Opportunities</h2>
+
+        <div class="internship-list">
+
+            <div class="internship">
+
+                <h3>Web Development Intern</h3>
+
+                <p>Company: Tech Solutions</p>
+
+                <p>Location: Remote</p>
+
+                <p>Duration: 3 Months</p>
+
+                <p>Skills: HTML, CSS, JavaScript</p>
+
+                <a class="apply-btn" href="#apply-wdi">Apply</a>
+
+            </div>
+
+
+            <div class="internship">
+
+                <h3>Cyber Security Intern</h3>
+
+                <p>Company: SecureTech</p>
+
+                <p>Location: Noida</p>
+
+                <p>Duration: 6 Months</p>
+
+                <p>Skills: Linux, Networking</p>
+
+                <a class="apply-btn" href="#apply-csi">Apply</a>
+
+            </div>
+
+
+            <div class="internship">
+
+                <h3>Data Analyst Intern</h3>
+
+                <p>Company: DataWorks</p>
+
+                <p>Location: Delhi</p>
+
+                <p>Duration: 4 Months</p>
+
+                <p>Skills: Python, SQL, Excel</p>
+
+                <a class="apply-btn" href="#apply-dai">Apply</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Companies -->
+
+    <div class="section" id="companies">
+
+        <h2>Companies Hiring</h2>
+
+        <div class="companies">
+
+            <div class="company">Google</div>
+
+            <div class="company">Microsoft</div>
+
+            <div class="company">Amazon</div>
+
+            <div class="company">TCS</div>
+
+            <div class="company">Infosys</div>
+
+            <div class="company">Wipro</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- About -->
+
+    <div class="about" id="about">
+
+        <h2>About Our Portal</h2>
+
+        <p>
+            JobPortal is a simple platform where students and job seekers
+            can find jobs and internship opportunities. The main purpose
+            of this portal is to make the job searching process easier
+            and help students find suitable career opportunities.
+        </p>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>JobPortal</p>
+
+        <p>Job and Internship Management Portal</p>
+
+        <p>© 2026 All Rights Reserved</p>
+
+    </footer>
+
+
+    <!-- Apply Modals (pure HTML + CSS :target trick, no JavaScript) -->
+
+    <!-- Software Developer -->
+    <div class="modal" id="apply-sd">
+        <a class="modal-bg" href="#jobs"></a>
+        <div class="modal-box">
+            <h3>Apply: Software Developer</h3>
+            <p class="modal-company">ABC Technologies &bull; Noida &bull; 5 - 8 LPA</p>
+            <form method="get">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#jobs">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Web Developer -->
+    <div class="modal" id="apply-wd">
+        <a class="modal-bg" href="#jobs"></a>
+        <div class="modal-box">
+            <h3>Apply: Web Developer</h3>
+            <p class="modal-company">Web Solutions &bull; Delhi &bull; 4 - 7 LPA</p>
+            <form method="get">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#jobs">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Cyber Security Analyst -->
+    <div class="modal" id="apply-csa">
+        <a class="modal-bg" href="#jobs"></a>
+        <div class="modal-box">
+            <h3>Apply: Cyber Security Analyst</h3>
+            <p class="modal-company">Secure Systems &bull; Gurgaon &bull; 5 - 9 LPA</p>
+            <form method="get">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#jobs">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Web Development Intern -->
+    <div class="modal" id="apply-wdi">
+        <a class="modal-bg" href="#internships"></a>
+        <div class="modal-box">
+            <h3>Apply: Web Development Intern</h3>
+            <p class="modal-company">Tech Solutions &bull; Remote &bull; 3 Months</p>
+            <form method="get">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="year" required>
+                    <option value="">Select Year of Study</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#internships">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Cyber Security Intern -->
+    <div class="modal" id="apply-csi">
+        <a class="modal-bg" href="#internships"></a>
+        <div class="modal-box">
+            <h3>Apply: Cyber Security Intern</h3>
+            <p class="modal-company">SecureTech &bull; Noida &bull; 6 Months</p>
+            <form method="get">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="year" required>
+                    <option value="">Select Year of Study</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#internships">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Data Analyst Intern -->
+    <div class="modal" id="apply-dai">
+        <a class="modal-bg" href="#internships"></a>
+        <div class="modal-box">
+            <h3>Apply: Data Analyst Intern</h3>
+            <p class="modal-company">DataWorks &bull; Delhi &bull; 4 Months</p>
+            <form method="get">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="year" required>
+                    <option value="">Select Year of Study</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#internships">&times; Close</a>
+        </div>
+    </div>
+
+</body>
+</html>
