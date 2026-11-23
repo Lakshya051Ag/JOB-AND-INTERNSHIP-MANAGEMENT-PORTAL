@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Jobs - Job and Internship Management Portal</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header">
+            <a href="index.html" class="logo">
+                Job<span>Portal</span>
+            </a>
+
+            <div class="nav">
+                <a href="index.html">Home</a>
+                <a href="jobs.html" class="active">Jobs</a>
+                <a href="internships.html">Internships</a>
+                <a href="companies.html">Companies</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Page Header Banner -->
+    <div class="page-header">
+        <h1>Available Job Openings</h1>
+        <p>Explore full-time and fresher job openings across leading tech organizations.</p>
+
+        <!-- Search Bar -->
+        <div class="search">
+            <input type="text" id="jobSearch" placeholder="Search by job title or skill (e.g. Java, Web)">
+            <input type="text" id="locSearch" placeholder="Filter by location (e.g. Noida, Delhi)">
+            <button type="button" id="searchBtn">Search</button>
+            <button type="button" id="resetBtn" class="reset-btn">Reset</button>
+        </div>
+    </div>
+
+
+    <!-- Jobs Section -->
+    <div class="section jobs-bg" id="jobs">
+        <h2>Job Openings List</h2>
+        <p class="section-desc">Showing verified job openings with direct application support</p>
+
+        <div class="job-list">
+
+            <!-- Job 1 -->
+            <div class="job">
+                <h3>Software Developer</h3>
+                <p><strong>Company:</strong> ABC Technologies</p>
+                <p><strong>Location:</strong> Noida</p>
+                <p><strong>Salary:</strong> 5 - 8 LPA</p>
+                <p><strong>Skills:</strong> Java, Python, SQL</p>
+                <a class="apply-btn" href="#apply-sd">Apply Now</a>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="job">
+                <h3>Web Developer</h3>
+                <p><strong>Company:</strong> Web Solutions</p>
+                <p><strong>Location:</strong> Delhi</p>
+                <p><strong>Salary:</strong> 4 - 7 LPA</p>
+                <p><strong>Skills:</strong> HTML, CSS, JavaScript, Bootstrap</p>
+                <a class="apply-btn" href="#apply-wd">Apply Now</a>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="job">
+                <h3>Cyber Security Analyst</h3>
+                <p><strong>Company:</strong> Secure Systems</p>
+                <p><strong>Location:</strong> Gurgaon</p>
+                <p><strong>Salary:</strong> 5 - 9 LPA</p>
+                <p><strong>Skills:</strong> Networking, Linux, Security</p>
+                <a class="apply-btn" href="#apply-csa">Apply Now</a>
+            </div>
+
+            <!-- Job 4 -->
+            <div class="job">
+                <h3>Data Analyst</h3>
+                <p><strong>Company:</strong> DataWorks Infotech</p>
+                <p><strong>Location:</strong> Bangalore</p>
+                <p><strong>Salary:</strong> 5 - 8.5 LPA</p>
+                <p><strong>Skills:</strong> Python, SQL, PowerBI, Excel</p>
+                <a class="apply-btn" href="#apply-da">Apply Now</a>
+            </div>
+
+            <!-- Job 5 -->
+            <div class="job">
+                <h3>Java Full Stack Engineer</h3>
+                <p><strong>Company:</strong> TechCorp Global</p>
+                <p><strong>Location:</strong> Hyderabad</p>
+                <p><strong>Salary:</strong> 6 - 10 LPA</p>
+                <p><strong>Skills:</strong> Core Java, Spring Boot, React, MySQL</p>
+                <a class="apply-btn" href="#apply-jfse">Apply Now</a>
+            </div>
+
+            <!-- Job 6 -->
+            <div class="job">
+                <h3>Cloud Support Associate</h3>
+                <p><strong>Company:</strong> CloudNest Solutions</p>
+                <p><strong>Location:</strong> Pune</p>
+                <p><strong>Salary:</strong> 4.5 - 7 LPA</p>
+                <p><strong>Skills:</strong> AWS, Cloud Basics, Linux, Shell Scripting</p>
+                <a class="apply-btn" href="#apply-csa2">Apply Now</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>JobPortal</strong> - Job and Internship Management Portal</p>
+        <p>Department of Computer Engineering Application | B.Tech CSE 3rd Year Mini Project</p>
+        <p class="copyright">&copy; 2026 All Rights Reserved | Developed by Group 8</p>
+    </footer>
+
+
+    <!-- Apply Modals -->
+
+    <!-- Software Developer -->
+    <div class="modal" id="apply-sd">
+        <a class="modal-bg" href="#"></a>
+        <div class="modal-box">
+            <h3>Apply: Software Developer</h3>
+            <p class="modal-company">ABC Technologies &bull; Noida &bull; 5 - 8 LPA</p>
+            <form>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Web Developer -->
+    <div class="modal" id="apply-wd">
+        <a class="modal-bg" href="#"></a>
+        <div class="modal-box">
+            <h3>Apply: Web Developer</h3>
+            <p class="modal-company">Web Solutions &bull; Delhi &bull; 4 - 7 LPA</p>
+            <form>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Cyber Security Analyst -->
+    <div class="modal" id="apply-csa">
+        <a class="modal-bg" href="#"></a>
+        <div class="modal-box">
+            <h3>Apply: Cyber Security Analyst</h3>
+            <p class="modal-company">Secure Systems &bull; Gurgaon &bull; 5 - 9 LPA</p>
+            <form>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Data Analyst -->
+    <div class="modal" id="apply-da">
+        <a class="modal-bg" href="#"></a>
+        <div class="modal-box">
+            <h3>Apply: Data Analyst</h3>
+            <p class="modal-company">DataWorks Infotech &bull; Bangalore &bull; 5 - 8.5 LPA</p>
+            <form>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Java Full Stack Engineer -->
+    <div class="modal" id="apply-jfse">
+        <a class="modal-bg" href="#"></a>
+        <div class="modal-box">
+            <h3>Apply: Java Full Stack Engineer</h3>
+            <p class="modal-company">TechCorp Global &bull; Hyderabad &bull; 6 - 10 LPA</p>
+            <form>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Cloud Support Associate -->
+    <div class="modal" id="apply-csa2">
+        <a class="modal-bg" href="#"></a>
+        <div class="modal-box">
+            <h3>Apply: Cloud Support Associate</h3>
+            <p class="modal-company">CloudNest Solutions &bull; Pune &bull; 4.5 - 7 LPA</p>
+            <form>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="experience" required>
+                    <option value="">Select Experience</option>
+                    <option value="fresher">Fresher</option>
+                    <option value="1-2">1 - 2 Years</option>
+                    <option value="2plus">2+ Years</option>
+                </select>
+                <button class="submit-btn" type="submit">Submit Application</button>
+            </form>
+            <a class="modal-close" href="#">&times; Close</a>
+        </div>
+    </div>
+
+    <!-- Link External JavaScript File -->
+    <script src="script.js"></script>
+
+</body>
+</html>
